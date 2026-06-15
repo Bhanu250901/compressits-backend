@@ -50,7 +50,7 @@ public class AuthController {
     public String registerUser(
             @RequestBody User user
     ) {
-
+        System.out.println("REGISTER API CALLED: " + user.getEmail());
         // EMAIL EXISTS
         if (
                 userRepository
