@@ -50,7 +50,7 @@ public class AuthController {
     public String registerUser(
             @RequestBody User user
     ) {
-        userRepository.save(user);        System.out.println("REGISTER API CALLED: " + user.getEmail());
+      ;        System.out.println("REGISTER API CALLED: " + user.getEmail());
         // EMAIL EXISTS
         if (
                 userRepository
@@ -122,6 +122,10 @@ public class AuthController {
             }
 
         }
+        System.out.println(
+                "SAVING USER: "
+                        + user.getEmail()
+        );
         // SAVE USER
         userRepository.save(user);
 
