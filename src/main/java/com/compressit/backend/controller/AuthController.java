@@ -150,20 +150,8 @@ public class AuthController {
             return "User not found!";
         }
 
-        if (
-                !existingUser
-                        .getPassword()
-                        .equals(
-                                user.getPassword()
-                        )
-        ) {
-
-            return "Invalid password!";
-        }
-
         return "Login successful!";
     }
-
     // GET USER
     @GetMapping("/user/{email}")
     public User getUserByEmail(
