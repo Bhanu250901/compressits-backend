@@ -1024,4 +1024,38 @@ public class AuthController {
         return coinHistoryRepository
                 .findByEmail(email);
     }
+    @PostMapping("/google-login")
+    public User googleLogin(
+            @RequestBody User request
+    ) {
+
+        User existingUser =
+                userRepository
+                        .findByEmail(
+                                request.getEmail()
+                        )
+                        .orElse(null);
+
+        if (existingUser != null) {
+            return existingUser;
+        }
+
+        User user = new User();
+
+        user.setName(
+                request.getName()
+        );
+
+        user.setEmail(
+                request.getEmail()
+        );
+
+        user.setCoins(100);
+
+        user.setReferralCode(
+                generateReferralCode()
+        );
+
+        return userRepository.save(user);
+    }
 }
